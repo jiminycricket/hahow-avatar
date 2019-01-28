@@ -120,7 +120,7 @@ var config = {
             'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fhat-02.png?1548653127549'
         }
     ]
-  },'mouse': {
+  },'mouth': {
     'required': true,
     'defaultIndex': 0,
     'images': [
