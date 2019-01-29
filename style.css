@@ -42,7 +42,7 @@ h1 {
   height: 600px;
 }
 .canvas {
-  width: 100%;
+  width: 750px;
   position: fixed;
   left: 0;
 }
@@ -102,6 +102,9 @@ h1 {
     border: none;
   }
   .canvas-container {
+    position: fixed;
+    left: 0;
+    top: 0;
     width: 100%;
     background-color: #fff;
     height: 300px;
@@ -109,23 +112,13 @@ h1 {
     border-bottom: 1px solid black;
   }
   .canvas {
-    position: fixed;
-    top: 0;
-    left: 10%;
-    width: 80%;
+    margin: 0 auto;
+    width: 250px;
     height: 300px;
     z-index: 1;
+    left: calc(50% - 125px);
   }
-  .canvas:before {
-    position: absolute;
-    left: -38px;
-    background: white;
-    top: 0;
-    width: 100vw;
-    height: 300px;
-    content: ' ';
-    display: block;
-  }
+
   .main {
     padding-left: 0;
     padding-top: 365px;
