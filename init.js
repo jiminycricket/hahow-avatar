@@ -50,7 +50,7 @@ var config = {
         },
         {
             'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fbody-02.png?1548492299686',
-          //'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fbody-02.png?1548492299686'
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fbody-02.png?1548492299686'
         }
     ]
   },
@@ -78,6 +78,12 @@ var config = {
         },{
             'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fwear-03.png?1548652756997',
             'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fwear-03.png?1548652756997'
+        },{
+          'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fwear-04.png?1548680310769',
+          'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fwear-04.png?1548680310769'
+        },{
+          'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fwear-05.png?1548680310971',
+          'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fwear-05.png?1548680310971'
         }
     ]
   },'body-wear': {
@@ -98,7 +104,22 @@ var config = {
         },{
             'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-02.png?1548653038829',
             'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-02.png?1548653038829'
-        }
+        },{
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-03.png?1548681383592',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-03.png?1548681383592'
+        },{
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-04.png?1548681383567',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-04.png?1548681383567'
+        },{
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-05.png?1548681383757',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-05.png?1548681383757'
+        },{
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-06.png?1548681384056',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-06.png?1548681384056'
+        },{
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-07.png?1548681384184',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Feyes-07.png?1548681384184'
+        },
     ]
   },'face': {
     'required': false,
@@ -107,6 +128,15 @@ var config = {
         {
             'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fface-01.png?1548653092423',
             'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fface-01.png?1548653092423'
+        },{
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fface-02.png?1548681384783',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fface-02.png?1548681384783'
+        },{
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fface-03.png?1548681387096',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fface-03.png?1548681387096'
+        },{
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fface-04.png?1548681384995',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fface-04.png?1548681384995'
         }
     ]
   },'hat': {
@@ -125,13 +155,23 @@ var config = {
     'defaultIndex': 0,
     'images': [
         {
-            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouse-01.png?1548653175001',
-            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouse-01.png?1548653175001'
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-01.png?1548679721152',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-01.png?1548679721152'
         }, {
-            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouse-02.png?1548653175719',
-            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouse-02.png?1548653175719'
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-02.png?1548679721372',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-02.png?1548679721372'
         }, {
-            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouse-03.png?1548519057542',
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-03.png?1548681385461',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-03.png?1548681385461',
+        }, {
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-04.png?1548681385699',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-04.png?1548681385699',
+        }, {
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-05.png?1548681386202',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-05.png?1548681386202',
+        }, {
+            'thumbnail': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-06.png?1548681386636',
+            'src': 'https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2Fmouth-06.png?1548681386636',
         }
     ]
   }

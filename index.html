@@ -4,7 +4,7 @@
     <title>Hello!</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
@@ -14,9 +14,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.js"></script>
     <script src="/init.js"></script>
-
+  
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6421801-12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ismobilejs/0.4.1/isMobile.js"></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -35,17 +37,19 @@
       <p class="btn text-center">1,000 HP</p>
     </div>
     <div class="main">
-      <div class="canvas-container">
-        <div class="canvas">
-        </div>
+      <div class="canvas">
       </div>
+      
       <div class="controller-panel">
-      </div>
+        <div class="mobile-tip">
+          請往下滑更換服裝
+        </div>
+      </div>      
     </div>
-    <div class="download-btn" onclick="downloadImage()">
+    <div class="download-btn" style="display: none" onclick="downloadImage()">
       <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP0SURBVGhD7drZy01RGMfxIxKS6U9wRZLpwp2kKEXGG5QxMxERZbwwDykpiSLJVDIkknkWN4YSCVEiJPM8fH8n+22/633OOfvs4XROrac+N+fs/az1nL332mut98358OHDhw8fPnz4qOFoi2HYhMt4ga/4hEf/P1uPfmiGmo3+OIJv+BvRZxxGL9RMdMEVWAWV4yI6oapjDr7DKiCOL5iKqotG2Ayr02nYgKoJFbsDVkcDT7AT8zAaQzEcEzEfu/AM1rmBtaiKWAWrg6JCl2NABAOxEjrHyiXKVfFogp7Qq+YsrI79xl4MhlVcMUOgkfoP3Lz6rC8yjzYYhQN4D7cjYT+xAlYx5dCd8wtuft36rZFJNMdCvIPbcCGaYFgFxLEFVhuLkHp0x1NYDRZyFVbH49JzfQtuOy+hi5FaaATVrMdtqBgdrxHY6ngSY2G928cglRgH69kJ00iq2dRRaPp4COtgdThsLvR6ClsA69iwk7D6oaJ7owViRR/8gJVcP8JxTIDVqShUoJv3IKxjw2bBPS9MixH1bRJaIlK0x1tYCW9DkwSrM+WIW7Ce5Q9wz7VoNabCNSEqGsdgJTiBQbA6Uq64Bct1uOcWsw8FBzYtx6yTLkG/rtWBOJIUvB/uuaVord0KDcK6uhr6NZuyGo8rScFr8Bw3oedVA+Vp3Ic1KwucQmPUhR5yLcPcA7ULYTWcRJKCi9H4cgGFCt+IutDc1T1Ar500b+VAVgUHFuMj3DY0t++MfGyFe4A6ZiVMKuuCRe96a1tJc4Z8XIP7pdatVrKkKlGwbIfbjuYX7WCuP8fDShSFBhcVZrHmxXdgHSvKZbVRipaleh+7bY2Eefn1XFuJotCP9QpuznIpR5IffhvcnLuRexP6IDACVpKokhadtFiZCTevZoy5e6EPAtNgJSlH3KLTKFZ0+7q5XyP/Ene/0N6SlaRc5RadVrFivW71+OZ3Dd0vzsBKEkfUotMsVrSqc9t4jFzH0AcBLbjTbLxU0WkXK0vhtnMO+XgI98s0r7IUKjqLYsXaUV2GfCyB+6XmpfrcShaXW3RWxc6AppPheqQH8qEllPXr60+aaYzYYUHRWRWrSYf15tH2br1NgSlwDxIVncWVzqpYLRmtOmajXqj6PbAO1u2tZ0IbfFZD1WA6rCsr+sN7UzQI7f4V20rRBFyFr4Ya0MvdarwS9J7VXaLRWH0qtBbW9nFXFAz9WeUGrJNrjXZatR9XMvS/FoVu71qhsUd3QeTQMz0Z1uhd7TSv6IZYoT0vjdIPYCWvJnr1aDQ2B6g40QHaDdF2yV1o9WE1XAlaCGjz4jw0cGlSUXLz3YcPHz58+PDhw0c2kcv9A0rVhrgd33D5AAAAAElFTkSuQmCC">
     </div>
-
+      
     <canvas id="canvas" class="hidden" width="802" height="937"></canvas>
     <script>
       var assets = {};
@@ -92,6 +96,7 @@
       
       function preloadFinishCallback(){
         $('.loading').hide();
+        $('.download-btn').show();
         //append child
         for(var key in assets) {
           var container = $('<div class="controller-container">');
@@ -158,11 +163,32 @@
             ctx.drawImage($('.layout-' + key + ' img')[0],0,0);
           }
         }
-        var link = document.createElement('a')
-        var image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-        link.setAttribute("href", image);
-        link.setAttribute("download", "profile.png")
-        link.click();
+        var image
+        if(isMobile.apple.device){
+          $.fancybox.open('<div class="message"><h2>Hello!</h2><p>小蛙著裝中… 請在圖片產生後，長按即可儲存圖片囉～</p></div>');
+          setTimeout(function(){
+            image = canvas.toDataURL("image/png");
+            window.open(image)
+            $.fancybox.close();
+          }, 4500);
+        } else {
+          var link = document.createElement('a')
+          image = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          link.setAttribute("href", image);
+          link.setAttribute("download", "profile.png");
+          if(isMobile.android.device) {
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            $.fancybox.open('<div class="message"><h2>Hello!</h2><p>下載完成</p></div>');
+            setTimeout(function(){
+              $.fancybox.close();
+            }, 2000)
+          } else {
+            link.click();
+          }
+        }
+        
         if(gtag){
           gtag('event', '下載', {
             'event_category': '全身圖下載',
