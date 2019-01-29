@@ -8,7 +8,8 @@
     
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="/style.css">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
     <!-- import the webpage's javascript file -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.6/dist/jquery.fancybox.min.css" />
@@ -19,6 +20,8 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-6421801-12"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ismobilejs/0.4.1/isMobile.js"></script>
 
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -28,6 +31,28 @@
     </script>
   </head>  
   <body>
+  <!-- Modal -->
+  <div class="modal fade" id="right-answer-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">成功解鎖！！！！</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2F%E8%A7%A3%E9%8E%96%E7%95%AB%E9%9D%A2.jpg?1548755863861" alt="">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">去玩玩新道具</button>
+          <a class="call-to-action" href="https://hahow.in/courses/58aedfd95c4e6507007c4599?utm_source=fb-student-group&utm_medium=hahow-avatar&&utm_campaign=19hahow-hackathon" target="_blank">
+            <button type="button" class="btn btn-primary">了解課程內容</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
     <h1 class="loading">Loading</h1>
     <div style="display: none;" id="modal">
       <h2>你願意花多少 HP 購買!</h2>
@@ -35,6 +60,15 @@
       <p class="btn text-center">200 HP</p>
       <p class="btn text-center">400 HP</p>
       <p class="btn text-center">1,000 HP</p>
+    </div>
+    <div style="display: none;" id="event">
+      <h1>回答問題解鎖 諾米 套裝</h1>
+      <video controls autoplay="false" src="https://cdn.glitch.com/c2e79d08-6e6b-43b7-b39d-5b3b117677ff%2F-%20%20-%20Hahow%20.mp4?1548755933811"></video>
+      <h1>看完這堂課你會了解什麼？</h1>
+      <button class="option" onclick="wrongAnswer()">近視</button>
+      <button class="option" onclick="rightAnswer()">透視</button>
+      <button class="option" onclick="wrongAnswer()">電視</button>
+      <button class="option" onclick="wrongAnswer()">是不是</button>
     </div>
     <div class="main">
       <div class="canvas-container">
@@ -53,6 +87,14 @@
     </div>
       
     <canvas id="canvas" class="hidden" width="802" height="937"></canvas>
+
+    <div class="call-to-action-banner">
+      <a target="_blank" href="https://hahow.in/courses/58aedfd95c4e6507007c4599?utm_source=fb-student-group&utm_medium=hahow-avatar&&utm_campaign=19hahow-hackathon">
+        <button>看看糯米的課程內容</button>
+      </a>
+    </div>
+
+
     <script>
       var assets = {};
       var controllerItemWidth = 100;
@@ -75,7 +117,8 @@
             }
             assets[key].push({
               'thumbnail': thumbnail,
-              'image': image
+              'image': image,
+              'lock': !!assetsArray[i].lock
             });
             $(thumbnail).data('src-dom', assetsArray[i].src ? image : null);
             thumbnail.load(assetsArray[i].thumbnail, function(e){
@@ -110,7 +153,20 @@
             var li = $('<li>');
             li.data('layout', key);
             li.append(assets[key][i].thumbnail);
-            
+            if(assets[key][i].lock) {
+
+              if(window.localStorage) {
+                var removeLock = localStorage.getItem('remove-lock');
+              }
+
+              if(removeLock !== 'true') {
+                li.addClass('lock');
+                li.attr('data-fancybox','');
+                li.attr('data-src','#event');
+              } else {
+                li.addClass('unlock');
+              }
+            }
             if($(assets[key][i].thumbnail).data('src-dom') === null){
               li.addClass('pay-content');
               li.attr('data-fancybox','');
@@ -129,13 +185,52 @@
           ul.css('width', width + 'px');
           $('.controller-panel').append(container);
         }
+        bindEvent()
       }
-      
+      function lockHandler() {
+        console.log('lockHandler')
+        gtag('event', '開始解鎖', {
+          'event_category': '諾米套裝',
+          'event_label': '',
+          'value': 1
+        });
+      }
+      function bindEvent() {
+        $('.lock').bind('click', lockHandler);
+      }
+
+      function wrongAnswer() {
+        alert('答錯了～再試試看')
+        gtag('event', '答題', {
+          'event_category': '諾米問題',
+          'event_label': '答錯',
+          'value': 0
+        });
+      }
+
+      function rightAnswer() {
+        $.fancybox.close();
+        $('#right-answer-modal').modal('show');
+        $('.lock').unbind('click', lockHandler);
+        $('.lock').removeAttr('data-fancybox')
+        $('.lock').addClass('unlock')
+        $('.lock').removeClass('lock')
+        gtag('event', '答題', {
+          'event_category': '諾米問題',
+          'event_label': '答對',
+          'value': 1
+        });
+        if(window.localStorage) {
+          localStorage.setItem('remove-lock', true);
+        }
+      }
+
       function appendToCanvas(e){
         var li = $(e.currentTarget);
         var layoutType = li.data('layout');
-        
-        if(li.hasClass('selected')){
+
+        if(li.hasClass('lock')) {
+        } else if (li.hasClass('selected')){
           
           if(config[layoutType].required){
             alert('請不要脫我衣服！')
@@ -153,6 +248,15 @@
           children.removeClass('selected');
           li.addClass('selected');
           $('.layout-' + layoutType).html(thumbnail.data('src-dom'));
+        }
+        if($('.selected.unlock').length > 0) {
+          $('.call-to-action-banner').css({
+            display: 'flex'
+          })
+        } else {
+          $('.call-to-action-banner').css({
+            display: 'none'
+          })
         }
       }
       function downloadImage(){
